@@ -1,4 +1,5 @@
 import {cart} from "../data/cart.js";
+import {products} from "../data/products.js";
 
 let productsHTML = "";
 
@@ -87,3 +88,4 @@ document.querySelectorAll(".js-add-to-cart")
     });
   });
 
+// the exercise of adding more than one piece to the cart
