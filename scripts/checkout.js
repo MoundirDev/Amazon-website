@@ -6,6 +6,22 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 
 
+const value = async function loadPage() {
+    await loadProductsFetch();
+    
+    await new Promise((resolve) => {
+        loadCart(() => {
+            resolve("value3 ");
+        });
+    });
+
+    renderOrderSummary();
+    renderPaymentSummary();
+}
+
+loadPage()
+ 
+/*
 Promise.all([
     
     loadProductsFetch(),
@@ -20,7 +36,7 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 })
-
+*/
 
 // new Promise( (resolve) => {
 //     loadProducts(() => {
