@@ -2,30 +2,44 @@
   max-width: 850px;
   margin-top: 90px;
   margin-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  /* margin-left: auto;
-     margin-right auto;
-     Is a trick for centering an element horizontally
-     without needing a container. */
+  padding: 30px;
   margin-left: auto;
   margin-right: auto;
+
+  border: 1px solid rgb(222, 222, 222);
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  font-size: 17px;
 }
 
 .back-to-orders-link {
   display: inline-block;
   margin-bottom: 30px;
+  font-size: 17px;
+  color: #007185;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.back-to-orders-link:hover {
+  background-color: #e8f0fe;
+  color: #004f61;
+}
+
+
 .delivery-date {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: 700;
   margin-bottom: 10px;
+  color: rgb(0, 118, 0);
 }
 
 .product-info {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
+  font-weight: 500;
 }
 
 .product-image {
@@ -33,13 +47,15 @@
   max-height: 150px;
   margin-top: 25px;
   margin-bottom: 50px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 21px;
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
@@ -49,7 +65,7 @@
 
 @media (max-width: 575px) {
   .progress-labels-container {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -67,15 +83,27 @@
 .progress-bar-container {
   height: 25px;
   width: 100%;
-
   border: 1px solid rgb(200, 200, 200);
   border-radius: 50px;
   overflow: hidden;
+  background-color: #f3f3f3;
 }
 
 .progress-bar {
   height: 100%;
-  background-color: green;
+  background-color: #007600;
   border-radius: 50px;
-  width: 50%;
+  width: 0%;
+  animation: fill-bar 1.2s ease-out forwards;
+}
+
+
+@keyframes fill-bar {
+  from {
+    width: 0%;
+  }
+  to {
+
+    width: 50%;
+  }
 }

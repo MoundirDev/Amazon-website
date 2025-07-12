@@ -1,8 +1,7 @@
 .amazon-header {
   background-color: rgb(19, 25, 33);
   color: white;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 0 20px;
 
   display: flex;
   align-items: center;
@@ -13,6 +12,8 @@
   left: 0;
   right: 0;
   height: 60px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .amazon-header-left-section {
@@ -27,15 +28,17 @@
 
 .header-link {
   display: inline-block;
-  padding: 6px;
-  border-radius: 2px;
+  padding: 8px 10px;
+  border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  border: 1px solid rgba(0, 0, 0, 0);
+  color: white;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .header-link:hover {
-  border: 1px solid white;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #febd69;
 }
 
 .amazon-logo {
@@ -62,8 +65,7 @@
 .amazon-header-middle-section {
   flex: 1;
   max-width: 850px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin: 0 10px;
   display: flex;
 }
 
@@ -74,10 +76,12 @@
   height: 38px;
   padding-left: 15px;
   border: none;
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 3px 1px #febd69;
 }
 
 .search-button {
@@ -85,9 +89,14 @@
   border: none;
   width: 45px;
   height: 40px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-radius: 0 4px 4px 0;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: rgb(250, 170, 80);
 }
 
 .search-icon {
@@ -100,11 +109,18 @@
   width: 180px;
   flex-shrink: 0;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  gap: 15px;
 }
 
 .orders-link {
   color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.orders-link:hover {
+  color: #febd69;
 }
 
 .returns-text {
@@ -123,6 +139,12 @@
   display: flex;
   align-items: center;
   position: relative;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cart-link:hover {
+  color: #febd69;
 }
 
 .cart-icon {
@@ -143,7 +165,7 @@
   position: absolute;
   top: 4px;
   left: 22px;
-  
+
   width: 26px;
   text-align: center;
 }
