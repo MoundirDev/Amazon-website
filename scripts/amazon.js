@@ -32,7 +32,7 @@ function renderProductsGrid(){
             </div>
 
             <div class="product-quantity-container">
-              <select>
+              <select class="product-quantity-container-${product.id}">
                 <option selected value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -48,7 +48,7 @@ function renderProductsGrid(){
             ${product.extraInfoHTML()}
             <div class="product-spacer"></div>
 
-            <div class="added-to-cart">
+            <div class="added-to-cart" data-product-id="${product.id}">
               <img src="images/icons/checkmark.png">
               Added
             </div>
@@ -64,19 +64,28 @@ function renderProductsGrid(){
     cart.forEach((item) => {
       cartQuantity += item.quantity;
     });
-
     document.querySelector(".js-cart-quantity").innerText = cartQuantity;
   }
+  
   document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
   document.querySelectorAll(".js-add-to-cart")
     .forEach( (button) => {
       button.addEventListener("click" , () => {
-          const productId = button.dataset.productId;
+        
+        const productId = button.dataset.productId;
+        const addedMsg = document.querySelector(`.added-to-cart[data-product-id="${productId}"]`);
+        addedMsg.style.opacity = "1";
 
-          addToCart(productId);
-          updateCartQuantity();
+        const quantityOption = document.querySelector(`.product-quantity-container-${productId}`).value
+
+        addToCart(productId , Number(quantityOption));
+        updateCartQuantity();
+        
+        setTimeout( () => {
+          addedMsg.style.opacity = '0';
+        },3500);
+
       });
     });
 }
-// the exercise of adding more than one piece to the cart
