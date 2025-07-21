@@ -3,8 +3,16 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 // import "../data/cart-class.js";
 // import "../data/backend-practice.js";
-import { loadCart } from "../data/cart.js";
+import { loadCart , cart } from "../data/cart.js";
 
+export function updateCheckoutQuantity(){
+    let cartQuantity = 0;
+    cart.forEach((item) => {
+        cartQuantity += item.quantity;
+    });
+    document.querySelector(".return-to-home-link").innerText = `${cartQuantity} items`;
+    return cartQuantity;
+}
 
 async function loadPage() {
     // throw "error test"; 
@@ -17,7 +25,7 @@ async function loadPage() {
             });
         });
     } catch (error) {
-        console.log("Unexpected error. Please try again later.");
+        alert("Unexpected error. Please try again later.");
     }
 
     renderOrderSummary();
@@ -25,6 +33,7 @@ async function loadPage() {
 }
 
 loadPage();
+updateCheckoutQuantity(); 
  
 /*
 Promise.all([

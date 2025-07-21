@@ -4,6 +4,14 @@ import {formatCurrency} from './utils/money.js';
 
 loadProducts(renderProductsGrid);
 
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach((item) => {
+    cartQuantity += item.quantity;
+  });
+  document.querySelector(".js-cart-quantity").innerText = cartQuantity;
+}
+
 function renderProductsGrid(){
   let productsHTML = "";
 
@@ -59,13 +67,7 @@ function renderProductsGrid(){
           </div>`
   });
 
-  function updateCartQuantity(){
-    let cartQuantity = 0;
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    });
-    document.querySelector(".js-cart-quantity").innerText = cartQuantity;
-  }
+  updateCartQuantity();
   
   document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
