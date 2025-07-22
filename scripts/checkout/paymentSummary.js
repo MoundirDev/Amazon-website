@@ -52,12 +52,26 @@ export function renderPaymentSummary(){
         </div>
 
         <button class="place-order-button button-primary js-place-order-button">
-        Place your order
+            Place your order
         </button>
+
     `;
     document.querySelector(".js-payment-summary")
         .innerHTML = paymentSummaryHTML;
 
+    if (!cart || cart.length === 0){
+        const placeOrderBtn = document.querySelector(".place-order-button");
+        placeOrderBtn.disabled = true;
+        placeOrderBtn.classList.add("disabled-button");
+        document.querySelector(".js-order-summary").innerHTML = `
+            <div class="empty-cart-content">         
+                <span class="empty-cart-msg">Your cart is empty!</span>
+                <a href="amazon.html">
+                <button class="check-products">Check Products</button>
+                </a> 
+            </div>
+        `;
+    }
     document.querySelector(".js-place-order-button")
         .addEventListener("click" , async () => {
             
