@@ -7,12 +7,16 @@ const searchInput = document.querySelector(".search-bar");
 searchInput.addEventListener("input", input => {
   const value = input.target.value.toLowerCase();
 
-  document.querySelectorAll(".product-container").forEach(product => {
+  const products = document.querySelectorAll(".product-container");
+  products.forEach(product => {
     const name = product.querySelector(".product-name").textContent.toLowerCase();
     const isVisible = name.includes(value);
-    product.classList.toggle("hide-product-container", !isVisible);
+    product.classList.toggle("hidden", !isVisible);
   });
+  const hasVisibleProduct = Array.from(products).some(product => !product.classList.contains("hidden"));
 
+  const noMatchMsg = document.querySelector(".no-matching-products");
+  noMatchMsg.classList.toggle("hidden", hasVisibleProduct);
 });
 
 loadProducts(renderProductsGrid);
