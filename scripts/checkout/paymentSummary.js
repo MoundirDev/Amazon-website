@@ -65,7 +65,7 @@ export function renderPaymentSummary(){
         placeOrderBtn.classList.add("disabled-button");
         document.querySelector(".js-order-summary").innerHTML = `
             <div class="empty-cart-content">         
-                <span class="empty-cart-msg">Your cart is empty!</span>
+                <span class="empty-cart-msg">Your cart is empty! 🛒</span>
                 <a href="amazon.html">
                 <button class="check-products">Check Products</button>
                 </a> 

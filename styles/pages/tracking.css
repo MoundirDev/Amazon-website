@@ -1,89 +1,87 @@
 .main {
   max-width: 850px;
-  margin-top: 90px;
-  margin-bottom: 100px;
+  margin: 90px auto 100px auto;
   padding: 30px;
-  margin-left: auto;
-  margin-right: auto;
-
-  border: 1px solid rgb(222, 222, 222);
+  border: 1px solid #d9d5ca;
   border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
   background-color: #fff;
   font-size: 17px;
+  font-family: "Amazon Ember", "Segoe UI", sans-serif;
+
+  /* Refined light grey shadow */
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
+
 .back-to-orders-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 30px;
-  font-size: 17px;
-  color: #007185;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f1111;
   text-decoration: none;
   padding: 6px 10px;
   border-radius: 6px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  background-color: #fef8e7;
+  border: 1px solid #f0c14b;
+  transition: all 0.2s ease;
+}
+
+.back-to-orders-link::before {
+  content: "←";
+  font-size: 17px;
+  margin-right: 4px;
 }
 
 .back-to-orders-link:hover {
-  background-color: #e8f0fe;
-  color: #004f61;
+  background-color: #fff3d6;
+  color: #b12704;
+  border-color: #f7ca00;
 }
-
 
 .delivery-date {
   font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: rgb(0, 118, 0);
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #007600;
 }
 
 .product-info {
-  margin-bottom: 5px;
-  font-weight: 500;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #0f1111;
 }
 
 .product-image {
-  max-width: 150px;
-  max-height: 150px;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  max-width: 160px;
+  max-height: 160px;
+  margin: 25px 0 50px;
   border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eee;
 }
 
 .progress-labels-container {
   display: flex;
   justify-content: space-between;
-  font-size: 21px;
+  font-size: 19px;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
+  color: #0f1111;
 }
 
 .current-status {
-  color: rgb(6, 125, 98);
-}
-
-@media (max-width: 575px) {
-  .progress-labels-container {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 450px) {
-  .progress-labels-container {
-    flex-direction: column;
-    margin-bottom: 5px;
-  }
-
-  .progress-label {
-    margin-bottom: 3px;
-  }
+  color: #007600;
 }
 
 .progress-bar-container {
-  height: 25px;
+  height: 24px;
   width: 100%;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid #d4d4d4;
   border-radius: 50px;
   overflow: hidden;
   background-color: #f3f3f3;
@@ -97,13 +95,38 @@
   animation: fill-bar 1.2s ease-out forwards;
 }
 
-
 @keyframes fill-bar {
   from {
     width: 0%;
   }
   to {
-
     width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .progress-labels-container {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .progress-labels-container {
+    flex-direction: column;
+    margin-bottom: 6px;
+  }
+
+  .progress-label {
+    margin-bottom: 3px;
+  }
+
+  .product-image {
+    max-width: 100%;
+    margin: 20px auto 40px;
+    display: block;
+  }
+
+  .delivery-date {
+    font-size: 22px;
   }
 }
