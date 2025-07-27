@@ -2,6 +2,19 @@ import {cart , addToCart} from "../data/cart.js";
 import {products,loadProducts} from "../data/products.js";
 import {formatCurrency} from './utils/money.js';
 
+const searchInput = document.querySelector(".search-bar");
+
+searchInput.addEventListener("input", input => {
+  const value = input.target.value.toLowerCase();
+
+  document.querySelectorAll(".product-container").forEach(product => {
+    const name = product.querySelector(".product-name").textContent.toLowerCase();
+    const isVisible = name.includes(value);
+    product.classList.toggle("hide-product-container", !isVisible);
+  });
+
+});
+
 loadProducts(renderProductsGrid);
 
 function updateCartQuantity(){

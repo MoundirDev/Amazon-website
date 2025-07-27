@@ -189,3 +189,6 @@
   }
 }
 
+.hide-product-container{
+  display: none;
+}
