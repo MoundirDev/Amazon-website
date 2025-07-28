@@ -93,3 +93,8 @@ export function updateQuantity(productId, newQuantity){
     matchingItem.quantity = newQuantity;
     saveToStorage();
 }
+
+export function resetCart(){
+    cart.length = 0;
+    saveToStorage();
+}

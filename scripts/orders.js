@@ -2,16 +2,13 @@ import {orders} from "../data/orders.js";
 import {formatCurrency} from "../scripts/utils/money.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import {products , getProduct , loadProducts} from "../data/products.js";
+import { updateCartQuantity } from "./amazon.js";
 
 loadProducts(() => {
-    
-    console.log(products);
-
-    
     renderOrdersHTML();
-    console.log(orders);
-    
-})
+    console.log("orders loaded");  
+});
+updateCartQuantity(".cart-quantity")
 
 function formatOrderDate(date){
     return dayjs(date).format("MMMM D");

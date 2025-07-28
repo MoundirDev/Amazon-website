@@ -21,12 +21,12 @@ searchInput.addEventListener("input", input => {
 
 loadProducts(renderProductsGrid);
 
-function updateCartQuantity(){
+export function updateCartQuantity(selector){
   let cartQuantity = 0;
   cart.forEach((item) => {
     cartQuantity += item.quantity;
   });
-  document.querySelector(".js-cart-quantity").innerText = cartQuantity;
+  document.querySelector(selector).innerText = cartQuantity;
 }
 
 function renderProductsGrid(){
@@ -84,7 +84,7 @@ function renderProductsGrid(){
           </div>`
   });
 
-  updateCartQuantity();
+  updateCartQuantity(".js-cart-quantity");
   
   document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
@@ -99,7 +99,7 @@ function renderProductsGrid(){
         const quantityOption = document.querySelector(`.product-quantity-container-${productId}`).value
 
         addToCart(productId , Number(quantityOption));
-        updateCartQuantity();
+        updateCartQuantity(".js-cart-quantity");
         
         setTimeout( () => {
           addedMsg.style.opacity = '0';
