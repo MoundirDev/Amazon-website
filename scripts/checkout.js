@@ -10,7 +10,7 @@ export function updateCheckoutQuantity(){
     cart.forEach((item) => {
         cartQuantity += item.quantity;
     });
-    document.querySelector(".return-to-home-link").innerText = `${cartQuantity} items`;
+    document.querySelector(".return-to-home-link").innerText = cartQuantity===1 ? `${cartQuantity} item` : `${cartQuantity} items`;
     return cartQuantity;
 }
 
