@@ -1,25 +1,43 @@
 import {cart , addToCart} from "../data/cart.js";
 import {products,loadProducts} from "../data/products.js";
-import {formatCurrency} from './utils/money.js';
 
-const searchInput = document.querySelector(".search-bar");
-
-searchInput.addEventListener("input", input => {
-  const value = input.target.value.toLowerCase();
-
-  const products = document.querySelectorAll(".product-container");
-  products.forEach(product => {
-    const name = product.querySelector(".product-name").textContent.toLowerCase();
-    const isVisible = name.includes(value);
-    product.classList.toggle("hidden", !isVisible);
-  });
-  const hasVisibleProduct = Array.from(products).some(product => !product.classList.contains("hidden"));
-
-  const noMatchMsg = document.querySelector(".no-matching-products");
-  noMatchMsg.classList.toggle("hidden", hasVisibleProduct);
+loadProducts(() => {
+	renderProductsGrid();
+	performSearch();
 });
 
-loadProducts(renderProductsGrid);
+export function performSearch(){
+	const url = new URL(window.location.href);
+  const searchParam = url.searchParams.get("search");
+
+	const searchInput = document.querySelector(".search-bar")
+	const searchBtn = document.querySelector(".search-icon");
+
+	searchBtn.addEventListener("click", () => {
+		const value = searchInput.value.trim().toLowerCase();
+		if (value !== "") {
+			const encoded = encodeURIComponent(value);
+			window.location.href = `amazon.html?search=${encoded}`;
+		}
+	});
+
+	searchInput.addEventListener("keydown", function (e) {
+		if (e.key === "Enter") {
+			const value = searchInput.value.trim().toLowerCase();
+			if (value !== "") {
+				const encoded = encodeURIComponent(value);
+				window.location.href = `amazon.html?search=${encoded}`;
+			}
+		}
+	});
+
+  if (searchParam) {
+    filterProducts(searchParam.toLowerCase());
+    searchInput.value = searchParam;
+  }
+}
+
+
 
 export function updateCartQuantity(selector){
   let cartQuantity = 0;
@@ -34,7 +52,7 @@ function renderProductsGrid(){
 
   products.forEach((product)=> {
       productsHTML += 
-          `<div class="product-container">
+          `<div class="product-container js-product-container-${product.id}">
             <div class="product-image-container">
               <img class="product-image"
                 src=${product.image}>
@@ -107,4 +125,28 @@ function renderProductsGrid(){
 
       });
     });
+}
+
+export function filterProducts(searchValue) {
+  const productsElements = [];
+
+  products.forEach(product => {
+    const productElement = document.querySelector(`.js-product-container-${product.id}`);
+    const name = product.name;
+    const keywords = product.keywords; 
+
+    const nameMatch = name.includes(searchValue);
+    const keywordsMatch = keywords.some(keyword => keyword.includes(searchValue));
+
+    const isVisible = nameMatch || keywordsMatch;
+    productElement.classList.toggle("hidden", !isVisible);
+    productsElements.push(productElement);
+  });
+
+  const hasVisibleProduct = productsElements.some(product => !product.classList.contains("hidden"));
+  const noMatchMsg = document.querySelector(".no-matching-products");
+
+  if (noMatchMsg) {
+    noMatchMsg.classList.toggle("hidden", hasVisibleProduct);
+  }
 }

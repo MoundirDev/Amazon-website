@@ -1,6 +1,6 @@
 import {products , getProduct , loadProducts} from "../data/products.js";
 import {getOrder , deliveryDateInfos} from "./orders.js";
-import { updateCartQuantity } from "./amazon.js";
+import { updateCartQuantity , performSearch} from "./amazon.js";
 
 const url = new URL(window.location.href);
 let orderId = url.searchParams.get("orderId");
@@ -8,6 +8,7 @@ let productId = url.searchParams.get("productId");
 
 loadProducts(() => {
     renderTrackingHTML(orderId,productId);
+    performSearch();
 });
 updateCartQuantity(".cart-quantity");
 
@@ -25,7 +26,7 @@ function progressBarPercentage(orderTime, deliveryTime) {
 
     const result = ((elapsed / total) * 100).toFixed(2);
     if (result <5) return 5;
-    else if (result >= 100) return 100;
+    else if (result >= 98) return 100;
     else return result;
 }
 

@@ -2,12 +2,13 @@ import {orders} from "../data/orders.js";
 import {formatCurrency} from "../scripts/utils/money.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import {products , getProduct , loadProducts} from "../data/products.js";
-import { updateCartQuantity } from "./amazon.js";
+import { updateCartQuantity , performSearch} from "./amazon.js";
 import { addToCart } from "../data/cart.js";
 
 loadProducts(() => {
     renderOrdersHTML();
-    console.log("orders loaded");  
+    console.log("orders loaded");
+    performSearch();  
 });
 updateCartQuantity(".cart-quantity");
 
