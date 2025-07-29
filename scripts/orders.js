@@ -9,13 +9,13 @@ loadProducts(() => {
     renderOrdersHTML();
     console.log("orders loaded");  
 });
-updateCartQuantity(".cart-quantity")
+updateCartQuantity(".cart-quantity");
 
 function formatOrderDate(date){
     return dayjs(date).format("MMMM D");
 }
 
-function deliveryDateInfos(deliveryDate) {
+export function deliveryDateInfos(deliveryDate) {
     const today = dayjs();
 
     if (dayjs(deliveryDate).isAfter(today, 'day')) {
@@ -27,7 +27,7 @@ function deliveryDateInfos(deliveryDate) {
     }
 }
 
-function renderOrderDetails(orderedProducts){
+function renderOrderDetails(orderedProducts , orderId){
     let orderDetails = "";
 
     orderedProducts.forEach( product => {
@@ -56,8 +56,8 @@ function renderOrderDetails(orderedProducts){
                 </div>
 
                 <div class="product-actions">
-                <a href="tracking.html?orderId=123&productId=345">
-                    <button class="track-package-button button-secondary">
+                <a href="tracking.html?orderId=${orderId}&productId=${product.productId}">
+                    <button class="track-package-button js-track-package-button button-secondary">
                     Track package
                     </button>
                 </a>
@@ -82,7 +82,7 @@ function renderOrdersHTML(){
             </div>
         `;
     } else {
-        orders.forEach( order => {
+        orders.forEach( order => {            
             ordersHTML += `
                 <div class="order-container-${order.id}">
 
@@ -104,7 +104,7 @@ function renderOrdersHTML(){
                     </div>
                 </div>
 
-                ${renderOrderDetails(order.products)}
+                ${renderOrderDetails(order.products , order.id)}
 
                 </div>
             `;
@@ -129,4 +129,15 @@ function renderOrdersHTML(){
 
           });
     });
+}
+
+export function getOrder(orderId){
+  
+    let matchingOrder;
+    orders.forEach((order) => {
+        if (order.id === orderId) {
+            matchingOrder = order;
+        }
+    });
+    return matchingOrder;
 }

@@ -92,16 +92,7 @@
   background-color: #007600;
   border-radius: 50px;
   width: 0%;
-  animation: fill-bar 1.2s ease-out forwards;
-}
-
-@keyframes fill-bar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 50%;
-  }
+  transition: width 1s;
 }
 
 @media (max-width: 575px) {
