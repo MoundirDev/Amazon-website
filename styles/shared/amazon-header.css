@@ -106,8 +106,8 @@
 }
 
 .amazon-header-right-section {
-  width: 180px;
-  flex-shrink: 0;
+  width: auto;
+  flex-shrink: 1;
   display: flex;
   justify-content: flex-end;
   gap: 15px;
@@ -168,4 +168,25 @@
 
   width: 26px;
   text-align: center;
+}
+
+.login-link {
+  display: flex; /* make it a flex container */
+  align-items: center; /* vertically center */
+  justify-content: center; /* horizontally center */
+  flex-shrink: 1; 
+  min-width: 0;   
+  white-space: nowrap; 
+  margin-bottom: 5px;
+  font-size: larger ;
+  font-weight: bold;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+@media (max-width: 800px) {
+  .login-link {
+    padding: 6px 8px;
+    font-size: 14px;
+  }
 }

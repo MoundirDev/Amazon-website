@@ -1,0 +1,78 @@
+/* ==== ShopEase Terms & Conditions Styles ==== */
+.tc-page {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f9f9fb;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+
+.tc-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* Main title with subtle yellow underline */
+.tc-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+.tc-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #ffce00; /* Amazon-like yellow */
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.tc-section {
+    margin-bottom: 30px;
+    background: white;
+    border-left: 4px solid #ffce00; /* Yellow accent line */
+    padding: 15px 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.tc-section h2 {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.tc-section p,
+.tc-section ul {
+    line-height: 1.7;
+    font-size: 115%;
+    color: black;
+    
+}
+
+.tc-section ul {
+    padding-left: 20px;
+}
+
+.tc-highlight {
+    background-color: #fff3cd;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Footer with subtle yellow tint */
+.tc-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    background: #fffbea;
+    padding-bottom: 15px;
+}

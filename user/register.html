@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Amazon</title>
+    <link rel="stylesheet" href="../styles/pages/register.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="../images/amazon-mobile-logo-white.png" type="image/png">
+  </head>
+  <body>
+    <main class="login-main">
+      <div class="login-card">
+        <h1 class="login-title">Create your account</h1>
+
+        <form action="/register" method="POST" class="login-form">
+          <input type="text" name="Fullname" placeholder="Full name" required>
+          <input type="text" name="Age" placeholder="Age" required>
+          <input type="email" name="Email" placeholder="Email address" required>
+          <input type="password" name="Password" placeholder="Password" required>
+          <input type="password" name="ConfirmPassword" placeholder="Confirm Password" required>
+
+          <button type="submit" class="login-btn">Create account</button>
+
+          <div class="login-options">
+            <label><input type="checkbox" name="Terms" required>
+              I agree to the 
+              <a href="privacy-policy.html" target="_blank" class="link">Terms & Conditions</a></label>
+          </div>
+
+          <!-- <div class="login-divider"></div>
+
+          <div class="social-login">
+            <button type="button" class="social-btn google">
+              <i class="fab fa-google"></i> Sign up with Google
+            </button>
+            <button type="button" class="social-btn facebook">
+              <i class="fab fa-facebook-f"></i> Sign up with Facebook
+            </button>
+            <button type="button" class="social-btn apple">
+              <i class="fab fa-apple"></i> Sign up with Apple
+            </button>
+          </div> -->
+
+          <div class="login-divider"></div>
+
+          <div class="login-register">
+            <span>Already have an account?</span>
+            <a href="login.html" class="link">Log in</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
